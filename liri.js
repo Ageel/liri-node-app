@@ -71,9 +71,9 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 })
 } else if (handles=='spotify-this-song'){
   var spotify = require('spotify');
-  var replaced = process.argv[3].replace(/\s/g, '+');
-  console.log(replaced);
-spotify.search({ type: 'track', query: replaced, limit: 20}, function(err, data) {
+  // var replaced = process.argv[3].replace(/\s/g, '+');
+  console.log(process.argv[3]);
+spotify.search({ type: 'track', query: process.argv[3], limit: 20}, function(err, data) {
     if ( err ) {
         console.log('Error occurred: ' + err);
         return;
@@ -94,6 +94,9 @@ spotify.search({ type: 'track', query: replaced, limit: 20}, function(err, data)
 var stringToSearch= process.argv[3];
 for (var i=0; i<stringToSearch.length; i++){
   console.log(stringToSearch[i]);
+  // if(stringToSearch[i]==' '){
+
+  // }
 }
 
 // var spotify = require('spotify');
