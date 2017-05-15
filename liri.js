@@ -68,22 +68,69 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
     }
 
   }
-});
-}
-
-
-
- var spotify = require('spotify');
-spotify.search({ type: 'track', query: 'beat it', limit: 2}, function(err, data) {
+})
+} else if (handles=='spotify-this-song'){
+  var spotify = require('spotify');
+  var replaced = process.argv[3].replace(/\s/g, '+');
+  console.log(replaced);
+spotify.search({ type: 'track', query: replaced, limit: 20}, function(err, data) {
     if ( err ) {
         console.log('Error occurred: ' + err);
         return;
     }
- 
+    var data = data.tracks.items[0];
     // Do something with 'data' 
-    console.log(JSON.stringify(data, null, 2));
+    // console.log(JSON.stringify(data, null, 2));
+    // console.log(data);
+    console.log("The artist name is: "+ data.artists[0].name);
+    console.log("The song name is: "+ data.name);
+    console.log("The preview url link is: "+ data.external_urls.spotify);
+    console.log("The album name is: "+ data.album.name);
+    console.log(data.album);
+    
+  
 });
+}
+var stringToSearch= process.argv[3];
+for (var i=0; i<stringToSearch.length; i++){
+  console.log(stringToSearch[i]);
+}
+
+// var spotify = require('spotify');
+// spotify.search({ type: 'track', query: 'mandjou', limit: 2}, function(err, data) {
+//     if ( err ) {
+//         console.log('Error occurred: ' + err);
+//         return;
+//     }
+//     var data = data.tracks.items[0]
+//     // Do something with 'data' 
+//     // console.log(JSON.stringify(data, null, 2));
+//     // console.log(data);
+//     console.log(data.name);
+//     console.log(data.external_urls.spotify);
+//     console.log(data.artists[0].name);
+//     // console.log(data.album);
+//     console.log(data.album.name);
+  
+// });
  
 
+
+// spotify.search({ type: 'artist OR album OR track', query: 'mandjou', limit: 20}, function(err, data) {
+//     if ( err ) {
+//         console.log('Error occurred: ' + err);
+//         return;
+//     }
+ 
+//     // Do something with 'data' 
+//     console.log(JSON.stringify(data, null, 2));
+// });
+ 
 
 // function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, hollaback)
+
+
+  // console.log(data.tracks.items.name); //song track name
+  //   console.log(data.album.href); //url 
+  //   console.log(data.album.name); //album name
+  //   console.log(data.preview_url); //preview link to the song
