@@ -91,13 +91,13 @@ spotify.search({ type: 'track', query: process.argv[3], limit: 20}, function(err
   
 });
 }
-var stringToSearch= process.argv[3];
-for (var i=0; i<stringToSearch.length; i++){
-  console.log(stringToSearch[i]);
-  // if(stringToSearch[i]==' '){
+// var stringToSearch= process.argv[3];
+// for (var i=0; i<stringToSearch.length; i++){
+//   console.log(stringToSearch[i]);
+//   // if(stringToSearch[i]==' '){
 
-  // }
-}
+//   // }
+// }
 
 // var spotify = require('spotify');
 // spotify.search({ type: 'track', query: 'mandjou', limit: 2}, function(err, data) {
